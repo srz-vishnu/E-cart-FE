@@ -8,11 +8,6 @@ const Footer = () => {
         <div className='md:flex grid grid-cols-2 gap justify-between items-start my-10'>
             <div className='space-y-5 py-5 border-b'>
                 <h1>E-commerce</h1>
-                {/* <div>
-                    <AiOutlineInstagram size={"1.5rem"}/>
-                    <AiOutlineYoutube size={"1.5rem"}/>
-                    <AiOutlineWhatsApp size={"1.5rem"}/>
-                </div> */}
                 <div className="flex space-x-4">
                     <AiOutlineInstagram size={"1.5rem"} className="cursor-pointer hover:text-pink-500" />
                     <AiOutlineYoutube size={"1.5rem"} className="cursor-pointer hover:text-red-600" />
