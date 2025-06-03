@@ -1,7 +1,7 @@
 import React from 'react'
 import {AiOutlineSearch} from 'react-icons/ai'
 
-const Hero = () => {
+const Hero = ({ category }) => {
   return (
     <div className='w-11/12 xl:w-4/5 h-[350px] m-auto bg-stone-200 rounded-xl'>
         <div className='w-full h-full flex justify-center items-center'>
