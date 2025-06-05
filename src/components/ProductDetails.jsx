@@ -6,7 +6,7 @@ import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
 import ReactImageMagnify from 'react-image-magnify';
 
 const ProductDetails = () => {
-
+ 
     const [quantity, setQuantity] = useState(1);
     const { id } = useParams();  // it gets the id from URL
 
@@ -63,6 +63,8 @@ const allProducts = [
 
   const product = allProducts.find(item => item.id === parseInt(id));  // here we finding the product from all_products with product id we got from URL
 
+  const [selectedImage, setSelectedImage] = useState(product.image);
+
   if (!product) {
     return (
     <div className="text-center my-24 text-xl font-semibold text-gray-700">
@@ -117,10 +119,12 @@ const allProducts = [
                         isFluidWidth: false,
                         width: 400,
                         height: 400,
-                        src: product.image,
+                      //src: product.image,
+                        src:selectedImage
                     },
                     largeImage: {
-                        src: product.image,
+                    //  src: product.image,
+                        src:selectedImage,
                         width: 650,
                         height: 700,
                     },
@@ -142,9 +146,17 @@ const allProducts = [
                     enlargedImagePosition: "beside", // optional: shows zoomed image beside
                     }}
                 />
+                <div className='flex space-x-3 mt-4'>
+                     {[product.image, "/lap1.png", "/lap2.jpg", "/lap3.jpg"].map((img, index) => (
+                    <img key={index} src={img} alt={`Thumbnail ${index}`}
+                        className={`w-16 h-16 object-cover border rounded-md cursor-pointer ${
+                        selectedImage === img ? 'ring-2 ring-blue-500' : ''
+                    }`}
+                    onClick={() => setSelectedImage(img)}
+                    />
+                    ))}
+                </div>
             </div>
-
-
             {/* <div className='w-[40%] h-[350px] border rounded-lg overflow-hidden'> 
                 <Zoom>
                     <img src={product.image} alt={product.name}
