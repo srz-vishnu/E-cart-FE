@@ -24,6 +24,8 @@
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate  } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import ProductDetails from './pages/ProductDetails';
+import ProtectedRoute from './components/ProtectRoute';
 
 function AppWrapper() {
   const location = useLocation();
@@ -34,7 +36,10 @@ function AppWrapper() {
       <Routes>
        <Route path="/" element={<Navigate to="/login" replace />} />
        <Route path="/login" element={<Login />} />
-       <Route path="/home" element={<Home />} />
+       {/* <Route path="/home" element={<Home />} /> */}
+        <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+       {/* <Route path="/product/:id" element={<ProductDetails />} /> */}
+       <Route path="/product/:id" element={<ProtectedRoute>  <ProductDetails/></ProtectedRoute> }/>
       </Routes>
     </div>
   );

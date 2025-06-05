@@ -73,6 +73,7 @@
 // export default Products
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Products = ({ category, setCategory }) => {
   const allProducts = [
@@ -127,11 +128,13 @@ const Products = ({ category, setCategory }) => {
       <div className='grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4'>
         {filteredProducts.map(product => (
           <div key={product.id} className='h-[350px] space-y-2'>
+            <Link to={`/product/${product.id}`}>
             <img
-              className='w-full h-4/5 object-cover rounded-xl'
+              className='w-full h-4/5 object-cover rounded-xl cursor-pointer'
               src={product.image}
               alt={product.name}
             />
+            </Link>
             <p className='text-gray-600'>{product.name}</p>
             <h1 className='text-xl font-semibold'>{product.price}</h1>
           </div>

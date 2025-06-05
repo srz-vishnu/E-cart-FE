@@ -6,7 +6,7 @@ const Hero = ({ category }) => {
   const contentMap = {
     all: {
       text: "From Work to Workout We’ve Got the Tech for You",
-      image: "../../ecart.jfif",
+      image: "../../covermain.jfif",
     },
     laptop: {
       text: "Find Your Perfect Laptop – Work Smarter, Game Harder",
