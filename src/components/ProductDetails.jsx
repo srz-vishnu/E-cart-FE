@@ -4,8 +4,12 @@ import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
 // import Zoom from 'react-medium-image-zoom'
 // import 'react-medium-image-zoom/dist/styles.css'
 import ReactImageMagnify from 'react-image-magnify';
+import { useCart } from "../context/context";
+
 
 const ProductDetails = () => {
+
+    const { cartItems, addToCart, removeFromCart } = useCart();
  
     const [quantity, setQuantity] = useState(1);
     const { id } = useParams();  // it gets the id from URL
@@ -36,28 +40,28 @@ const ProductDetails = () => {
 //   ];
 
 const allProducts = [
-  { id: 1, name: "Laptop 1", category: "laptop", price: "$820", image: "/computer.jpg" },
-  { id: 2, name: "Watch 1", category: "watch", price: "$300", image: "/smartwatch.jpg" },
-  { id: 3, name: "HeadSet 2", category: "headset", price: "$70", image: "/headset2.jpg" },
-  { id: 4, name: "Phone 1", category: "phone", price: "$70", image: "/phones1.jpg" },
-  { id: 5, name: "Laptop 2", category: "laptop", price: "$820", image: "/laptop.jpg" },
-  { id: 6, name: "Watch 2", category: "watch", price: "$300", image: "/watch_cover.jfif" },
-  { id: 7, name: "HeadSet 1", category: "headset", price: "$310", image: "/headset.jpg" },
-  { id: 8, name: "Phone 2", category: "phone", price: "$70", image: "/phone10.webp" },
-  { id: 9, name: "Laptop 3", category: "laptop", price: "$70", image: "/mac.jpg" },
-  { id: 10, name: "HeadSet 2", category: "headset", price: "$70", image: "/headset2.jpg" },
-  { id: 11, name: "Watch 3", category: "watch", price: "$70", image: "/smartwatch.jpg" },
-  { id: 13, name: "Laptop 4", category: "laptop", price: "$820", image: "/lap1.png" },
-  { id: 14, name: "Laptop 5", category: "laptop", price: "$820", image: "/lap2.jpg" },
-  { id: 15, name: "Phone 4", category: "phone", price: "$820", image: "/phone13.png" },
-  { id: 16, name: "Laptop 7", category: "laptop", price: "$820", image: "/lap5.jpg" },
-  { id: 17, name: "Laptop 8", category: "laptop", price: "$820", image: "/lap6.jpg" },
-  { id: 18, name: "Laptop 9", category: "laptop", price: "$820", image: "/lap3.jpg" },
-  { id: 19, name: "Phone 5", category: "phone", price: "$820", image: "/phone11.webp" },
-  { id: 20, name: "Phone 6", category: "phone", price: "$820", image: "/phone12.jpg" },
-  { id: 21, name: "Phone 7", category: "phone", price: "$820", image: "/phone8.webp" },
-  { id: 22, name: "Phone 8", category: "phone", price: "$820", image: "/phone9.jpg" },
-  { id: 23, name: "Phone 9", category: "phone", price: "$820", image: "/phone14.jpg" }
+  { id: 1, name: "Laptop 1", category: "laptop", price: "$820", image: "/computer.jpg", images: ["/computer.jpg", "/computer.jpg", "/computer.jpg"] },
+  { id: 2, name: "Watch 1", category: "watch", price: "$300", image: "/smartwatch.jpg", images: ["/smartwatch.jpg", "/smartwatch.jpg", "/smartwatch.jpg"] },
+  { id: 3, name: "HeadSet 2", category: "headset", price: "$70", image: "/headset2.jpg", images:["/headset2.jpg","/headset2.jpg","/headset2.jpg"] },
+  { id: 4, name: "Phone 1", category: "phone", price: "$70", image: "/phones1.jpg", images:["/phones1.jpg","/phones1.jpg","/phones1.jpg"] },
+  { id: 5, name: "Laptop 2", category: "laptop", price: "$820", image: "/laptop.jpg", images:["/laptop.jpg","/laptop.jpg","/laptop.jpg"] }, 
+  { id: 6, name: "Watch 2", category: "watch", price: "$300", image: "/watch_cover.jfif", images:["/watch_cover.jfif","/watch_cover.jfif","/watch_cover.jfif"]  },
+  { id: 7, name: "HeadSet 1", category: "headset", price: "$310", image: "/headset.jpg", images:["/headset.jpg","/headset.jpg","/headset.jpg"] },
+  { id: 8, name: "Phone 2", category: "phone", price: "$70", image: "/phone10.webp",  images:["/phone10.webp","/phone10.webp","/phone10.webp"]  },
+  { id: 9, name: "Laptop 3", category: "laptop", price: "$70", image: "/mac.jpg",  images:["/mac.jpg","/mac.jpg","/mac.jpg"] },
+  { id: 10, name: "HeadSet 2", category: "headset", price: "$70", image: "/headset2.jpg", images:["/headset2.jpg","/headset2.jpg","/headset2.jpg"] },
+  { id: 11, name: "Watch 3", category: "watch", price: "$70", image: "/smartwatch.jpg",  images:["/smartwatch.jpg","/smartwatch.jpg","/smartwatch.jpg"] },
+  { id: 13, name: "Laptop 4", category: "laptop", price: "$820", image: "/lap1.png",  images:["/lap1.png","/lap1.png","/lap1.png"] },
+  { id: 14, name: "Laptop 5", category: "laptop", price: "$820", image: "/lap2.jpg", images:["/lap2.jpg","/lap2.jpg","/lap2.jpg"] },
+  { id: 15, name: "Phone 4", category: "phone", price: "$820", image: "/phone13.png", images:["/phone13.png","/phone13.png","/phone13.png"] },
+  { id: 16, name: "Laptop 7", category: "laptop", price: "$820", image: "/lap5.jpg", images:["/lap5.jpg","/lap5.jpg","/lap5.jpg"]   },
+  { id: 17, name: "Laptop 8", category: "laptop", price: "$820", image: "/lap6.jpg", images:["/lap6.jpg","/lap6.jpg","/lap6.jpg"]  },
+  { id: 18, name: "Laptop 9", category: "laptop", price: "$820", image: "/lap3.jpg", images:["/lap3.jpg","/lap3.jpg","/lap3.jpg"]  },
+  { id: 19, name: "Phone 5", category: "phone", price: "$820", image: "/phone11.webp",images:["/phone11.webp","/phone11.webp","/phone11.webp"] },
+  { id: 20, name: "Phone 6", category: "phone", price: "$820", image: "/phone12.jpg",  images:["/phones12.jpg","/phones12.jpg","/phones12.jpg"] },
+  { id: 21, name: "Phone 7", category: "phone", price: "$820", image: "/phone8.webp", images:["/phone8.webp","/phone8.webp","/phone8.webp"] },
+  { id: 22, name: "Phone 8", category: "phone", price: "$820", image: "/phone9.jpg", images:["/phone9.jpg","/phone9.jpg","/phone9.jpg"] },
+  { id: 23, name: "Phone 9", category: "phone", price: "$820", image: "/phone14.jpg", images:["/phone14.jpg","/phone14.jpg","/phone14.jpg"] }
  ];
 
 
@@ -146,14 +150,25 @@ const allProducts = [
                     enlargedImagePosition: "beside", // optional: shows zoomed image beside
                     }}
                 />
-                <div className='flex space-x-3 mt-4'>
+                {/* hardcore ayite images kodukum like adiyile line */}
+                {/* <div className='flex space-x-3 mt-4'>   
                      {[product.image, "/lap1.png", "/lap2.jpg", "/lap3.jpg"].map((img, index) => (
                     <img key={index} src={img} alt={`Thumbnail ${index}`}
                         className={`w-16 h-16 object-cover border rounded-md cursor-pointer ${
-                        selectedImage === img ? 'ring-2 ring-blue-500' : ''
-                    }`}
-                    onClick={() => setSelectedImage(img)}
+                        selectedImage === img ? 'ring-2 ring-blue-500' : '' }`}
+                        onClick={() => setSelectedImage(img)}
                     />
+                    ))}
+                </div> */}
+                   {/* oru array create cheythu with images name and multiple image vach */}
+                <div className='flex space-x-3 mt-4'>
+                    {product.images.map((img, index) => (
+                        <img key={index} src={img} alt={`thumbnail-${index}`}
+                        className={`w-16 h-16 object-cover border rounded-md cursor-pointer ${
+                            selectedImage === img ? 'ring-2 ring-blue-500' : ''
+                        }`}
+                        onClick={() => setSelectedImage(img)}
+                        />
                     ))}
                 </div>
             </div>
@@ -170,19 +185,6 @@ const allProducts = [
             <div className='space-y-4 mt-4 md:mt-0 w-[60%]'>
                 <h1 className='text-3xl font-semibold'>{product.name}</h1>
                 <p className='text-xl text-green-600'><strong>Price: </strong>{product.price}</p>
-                {/* <div className="flex items-center border rounded-lg overflow-hidden">
-                        <p> <strong>Quantity :</strong></p>
-                        <button onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
-                            className="px-3 py-1 text-xl bg-gray-100 hover:bg-gray-200">
-                            –
-                        </button>
-                        <span className="px-4">{quantity}</span>
-                        <button
-                            onClick={() => setQuantity(prev => prev + 1)}
-                            className="px-3 py-1 text-xl bg-gray-100 hover:bg-gray-200">
-                            +
-                        </button>
-                </div> */}
                   <p><strong>Category:</strong> {product.category}</p>
                   <p><strong>Availability:</strong> In Stock</p>
                    <div className="flex items-center border rounded-lg overflow-hidden">
@@ -211,7 +213,9 @@ const allProducts = [
                 </p>
 
                 <div className='flex space-x-4 pt-4'>
-                    <button className='px-4 py-2 bg-rose-400 text-white rounded-xl hover:bg-rose-500'>Add to cart</button>
+                    <button onClick={() => {addToCart(product, quantity)
+                        window.alert("product added successfully")
+                    }} className='px-4 py-2 bg-rose-400 text-white rounded-xl hover:bg-rose-500'>Add to cart</button>
                     <button className='px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600'>Place order</button> 
                     <button className='px-4 py-2 border border-gray-400 rounded-xl flex items-center space-x-2 hover:bg-gray-100'>
                         <AiOutlineHeart />
