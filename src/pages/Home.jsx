@@ -1,8 +1,8 @@
 import { useState } from 'react'; // React hook to manage state
-import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import Product from '../components/Products';
 import Footer from '../components/Footer';
+import Navbar from '../components/Nav';
 
 export default function Home() {
   // We create state to track the selected category
@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <div>
-      <Nav />
+      <Navbar />
       {/* Pass the selected category to Hero */}
       <Hero category={category} />
       

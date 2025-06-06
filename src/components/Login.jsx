@@ -51,7 +51,8 @@ const Login = () => {
             console.log("Is Admin:", decoded.isadmin);
 
             localStorage.setItem("token", token);
-            localStorage.setItem("token_decoded_data", decoded.username);
+            localStorage.setItem("username", decoded.username);
+            localStorage.setItem("User ID:", decoded.id);
 
             // Router navigation
             navigate("/home"); 

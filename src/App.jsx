@@ -25,7 +25,9 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Navigate  } from '
 import Login from './pages/Login';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
+import Cart from './pages/CartPage'
 import ProtectedRoute from './components/ProtectRoute';
+import { CartProvider } from './context/context';
 
 function AppWrapper() {
   const location = useLocation();
@@ -37,9 +39,14 @@ function AppWrapper() {
        <Route path="/" element={<Navigate to="/login" replace />} />
        <Route path="/login" element={<Login />} />
        {/* <Route path="/home" element={<Home />} /> */}
-        <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/home" element={
+          <ProtectedRoute>
+          <Home />
+          </ProtectedRoute>
+        } />
        {/* <Route path="/product/:id" element={<ProductDetails />} /> */}
        <Route path="/product/:id" element={<ProtectedRoute>  <ProductDetails/></ProtectedRoute> }/>
+       <Route path="/cart" element={ <ProtectedRoute> <Cart /> </ProtectedRoute>} />
       </Routes>
     </div>
   );
@@ -48,7 +55,9 @@ function AppWrapper() {
 export default function App() {
   return (
     <Router>
+      <CartProvider>
       <AppWrapper />
+      </CartProvider>
     </Router>
   );
 }
