@@ -26,6 +26,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/CartPage'
+import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectRoute';
 import { CartProvider } from './context/context';
 
@@ -39,11 +40,8 @@ function AppWrapper() {
        <Route path="/" element={<Navigate to="/login" replace />} />
        <Route path="/login" element={<Login />} />
        {/* <Route path="/home" element={<Home />} /> */}
-        <Route path="/home" element={
-          <ProtectedRoute>
-          <Home />
-          </ProtectedRoute>
-        } />
+       <Route path="/home" element={ <ProtectedRoute> <Home /></ProtectedRoute> } />
+       <Route path="/profile" element={<ProtectedRoute>  <Profile/></ProtectedRoute> }/>
        {/* <Route path="/product/:id" element={<ProductDetails />} /> */}
        <Route path="/product/:id" element={<ProtectedRoute>  <ProductDetails/></ProtectedRoute> }/>
        <Route path="/cart" element={ <ProtectedRoute> <Cart /> </ProtectedRoute>} />

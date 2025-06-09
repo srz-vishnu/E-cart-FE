@@ -33,7 +33,9 @@ const Navbar = () => {
             {/* purpose is that it displays name when only its logged , if visit url without login there will be just icon */}
            {userName && (  
            <div className="flex items-center space-x-1.5">
-              <FaUserCircle size="1.5rem" className="text-gray-600" />
+               <Link to="/profile">
+                  <FaUserCircle size="1.5rem" className="text-gray-600" />
+              </Link>
               <span className="text-sm font-medium -mt-[1px]">{userName}</span>
            </div>
            )}

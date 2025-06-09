@@ -41,18 +41,21 @@ const Login = () => {
             alert(" login Success")
           // console.log("Login Response", response.data.result.token);
             const token = response.data.result.token;
-            //const decoded = jwt_decode.default(token);
             const decoded = jwt_decode(token);  
 
-            console.log("JWT Token:", token);
-            console.log("Decoded JWT", decoded);
-            console.log("Username", decoded.username);
-            console.log("User ID:", decoded.id);
-            console.log("Is Admin:", decoded.isadmin);
+        
 
             localStorage.setItem("token", token);
             localStorage.setItem("username", decoded.username);
-            localStorage.setItem("User ID:", decoded.id);
+            localStorage.setItem("UserID", decoded.id);
+            setTimeout(() => {
+  
+            console.log("JWT Token:", token);
+            console.log("Decoded JWT", decoded);
+            console.log("UserID", localStorage.getItem('UserID'));
+            console.log("after username:", localStorage.getItem('username'));
+            console.log("Is Admin:", decoded.isadmin);
+            }, 3000);
 
             // Router navigation
             navigate("/home"); 
