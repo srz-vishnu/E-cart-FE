@@ -1,14 +1,42 @@
-import React  from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Profile = () => {
-  const user = {
-    userName: 'Anandhu',
-    mail: 'anandhu@example.com',
-    phonenumber: '9876543210',
-    city: 'Ernakulam',
-    address: 'MG Road, Aluva',
-    pincode: '680701'
+  const [name, setName] = useState('');
+  const [mail, setMail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [pincode, setPincode] = useState('');
+  const userid = localStorage.getItem("UserID") // UserID this is the variable  in to which userid is being fetched from token and set in to
+
+  useEffect(() => {
+    //   const userid = localStorage.getItem("UserID") // UserID this is the variable  in to which userid is being fetched from token and set in to
+
+      if (!userid) return;
+
+  const fetchUserData = async () => {
+    try{
+        const token = localStorage.getItem("token");
+        const response = await axios.get(`http://localhost:8080/user/${userid}`, {
+            headers: {
+                Authorization: `Bearer ${token}` 
+            }
+            });
+        if (response.data.status === 'ok') {
+            const user = response.data.result;
+            setName(user.username);
+            setMail(user.mail);
+            setPhone(user.phonenumber);
+            setAddress(user.address);
+            setPincode(user.pincode);
+        }
+    } catch (error) {
+        console.error('Failed to fetch user details', error);
+    }
   };
+
+   fetchUserData();
+   }, [userid] );
 
   return (
     <div className="w-full max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-xl">
@@ -19,23 +47,23 @@ const Profile = () => {
       <div className="space-y-4 text-gray-800 text-sm">
         <div className="flex justify-between">
           <span className="font-semibold text-gray-600">Name</span>
-          <span>{user.userName}</span>
+          <span>{name}</span>
         </div>
         <div className="flex justify-between">
           <span className="font-semibold text-gray-600">Email</span>
-          <span>{user.mail}</span>
+          <span>{mail}</span>
         </div>
         <div className="flex justify-between">
           <span className="font-semibold text-gray-600">Mobile</span>
-          <span>{user.phonenumber}</span>
+          <span>{phone}</span>
         </div>
         <div className="flex justify-between">
           <span className="font-semibold text-gray-600">Address</span>
-          <span>{user.address}</span>
+          <span>{address}</span>
         </div>
         <div className="flex justify-between">
           <span className="font-semibold text-gray-600">Pincode</span>
-          <span>{user.pincode}</span>
+          <span>{pincode}</span>
         </div>
 
         <div className="mt-8 text-center">
