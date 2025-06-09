@@ -29,6 +29,10 @@ const Profile = () => {
             setPhone(user.phonenumber);
             setAddress(user.address);
             setPincode(user.pincode);
+
+            // Store user data in localStorage as a JSON string
+            localStorage.setItem("userDetails", JSON.stringify(user));
+            console.log("the user details", user);
         }
     } catch (error) {
         console.error('Failed to fetch user details', error);
