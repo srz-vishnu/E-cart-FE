@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const UpdateProfile = () => {
       const navigate = useNavigate();
@@ -10,6 +11,7 @@ const UpdateProfile = () => {
       const [phone, setPhone] = useState('');
       const [address, setAddress] = useState('');
       const [pincode, setPincode] = useState('');
+      const userid = localStorage.getItem("UserID") // UserID this is the variable  in to which userid is being fetched from token and set in to
 
       // right side field name is from local storage details field(below)
       useEffect(() =>{
@@ -22,26 +24,46 @@ const UpdateProfile = () => {
         }
       }, []);
 
-      const handleUpdate = () => {
+    //   const handleUpdate = () => {
+        const handleUpdate = async () => {
         const updateUser = {
             username: name,
             mail: mail,
-            phone: phone,
+            phonenumber: phone,
             address: address,
             pincode: pincode,
-        }
-        console.log("before updation-User Details:", updateUser);
-        localStorage.setItem("userDetails", JSON.stringify(updateUser));
-        console.log("Updated User Details:", updateUser);
+        };
+        console.log("Sending updated user details to backend:", updateUser);
+
+        // userid we get it from the token we stored 
+        // const userid = localStorage.getItem("UserID")
+        try {
+              const token = localStorage.getItem("token");
+              const response = await axios.put(`http://localhost:8080/user/update/${userid}`, updateUser, {
+                headers: {
+                     Authorization: `Bearer ${token}`, 
+                    "Content-Type": "application/json"
+                }
+              }); 
 
         alert("profile updated successfully");
+        console.log("response:", response);
+        localStorage.setItem("userDetails", JSON.stringify(updateUser));
+        console.log("Updated User Details:", updateUser);
         navigate("/profile");
+
+        }catch (error) {
+            // console.error ("failed to update the user details", error.response?.data || error.message);
+            // alert("failed to update user details");
+              const errorDetails = error.response?.data?.error?.details?.[0] || error.response?.data?.error?.message || error.message;
+              console.error("Failed to update user details:", errorDetails);
+              alert("Failed: " + errorDetails);
+        }
       };
 
       const handlecancel = () => {
         navigate("/profile");
       }
-
 
  return (
     <div className="w-full max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-xl">
