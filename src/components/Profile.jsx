@@ -10,8 +10,6 @@ const Profile = () => {
   const userid = localStorage.getItem("UserID") // UserID this is the variable  in to which userid is being fetched from token and set in to
 
   useEffect(() => {
-    //   const userid = localStorage.getItem("UserID") // UserID this is the variable  in to which userid is being fetched from token and set in to
-
       if (!userid) return;
 
   const fetchUserData = async () => {
@@ -71,9 +69,10 @@ const Profile = () => {
         </div>
 
         <div className="mt-8 text-center">
-        <button className="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700">
-          Edit
-        </button>
+            <button onClick={() => window.location.href = "/update-profile"}
+                className="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700">
+                Edit
+            </button>
         </div>
 
       </div>
