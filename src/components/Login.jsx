@@ -96,14 +96,14 @@ const Login = () => {
             return;
         }
 
-         if (!city.trim()) {
-           alert("Please enter your city!");
-           return;
-         }
-        if (/\d/.test(city)) {
-            alert("City cannot contain numbers!");
-            return;
-        }
+        //  if (!city.trim()) {
+        //    alert("Please enter your city!");
+        //    return;
+        //  }
+        // if (/\d/.test(city)) {
+        //     alert("City cannot contain numbers!");
+        //     return;
+        // }
 
         if (!mobile.trim()) {
             alert("Please enter your mobile number!");
@@ -138,7 +138,7 @@ const Login = () => {
        console.log("Email:", email);
        console.log("Password:", password);
        console.log("Mobile:", mobile);
-       console.log("City:", city)
+      // console.log("City:", city)
        console.log("Address:", address);
        console.log("Pincode:", pincode)
     //  }
@@ -147,7 +147,7 @@ const Login = () => {
         mail : email,
         password : password,
         phonenumber :parseInt(mobile,10),
-        city : city,
+       // city : city,
         address : address,
         pincode : parseInt(pincode, 10),
     };
@@ -165,7 +165,7 @@ const Login = () => {
         setName("");
         setEmail("");
         setPassword("");
-        setCity("");
+      //  setCity("");
         setMobile("");
         setAddress("");
         setPincode("");
@@ -189,7 +189,7 @@ const Login = () => {
   setName('');
   setEmail('');
   setPassword('');
-  setCity('');
+  //setCity('');
   setMobile('');
   setAddress('');
   setPincode('');
@@ -253,9 +253,9 @@ const Login = () => {
                      value={email} onChange={(e) =>setEmail(e.target.value)}
                      className='w-full p-1.2 border-b-2 border-gray-300 outline-none focus:border-cyan-500 placeholder-gray-400' />
 
-                    <input type="text" placeholder="City" required
+                    {/* <input type="text" placeholder="City" required
                     value={city} onChange={(e) =>setCity(e.target.value)}
-                    className='w-full p-1.2 border-b-2 border-gray-300 outline-none focus:border-cyan-500 placeholder-gray-400'/>
+                    className='w-full p-1.2 border-b-2 border-gray-300 outline-none focus:border-cyan-500 placeholder-gray-400'/> */}
 
                     <input type="number" placeholder="Mobile Number" required
                     value={mobile} onChange={(e) =>setMobile(e.target.value)}

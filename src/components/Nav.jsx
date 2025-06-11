@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react'
 import {AiFillHeart, AiOutlineSearch, AiOutlineShoppingCart} from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaUserCircle } from 'react-icons/fa'
+import { useLocation } from 'react-router-dom'
 
 const Navbar = () => {
 
   const navigation = useNavigate();
   const [userName, setUserName] = useState("");
+  const location = useLocation();
+  console.log("path is", location.pathname)
 
   useEffect(() => {
     const storedName = localStorage.getItem('username');
@@ -31,7 +34,7 @@ const Navbar = () => {
           <AiFillHeart size={"1.5rem"}/>
             <Link to="/cart"><AiOutlineShoppingCart size={'1.5rem'} /></Link>
             {/* purpose is that it displays name when only its logged , if visit url without login there will be just icon */}
-           {userName && (  
+           {userName && (location.pathname !== "/profile" && location.pathname !== "/update-profile") && (
            <div className="flex items-center space-x-1.5">
                <Link to="/profile">
                   <FaUserCircle size="1.5rem" className="text-gray-600" />
