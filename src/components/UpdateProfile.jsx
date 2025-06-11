@@ -26,10 +26,44 @@ const UpdateProfile = () => {
 
     //   const handleUpdate = () => {
         const handleUpdate = async () => {
+        
+              //validation
+         if (!name.trim()) {
+           alert("Please enter Name!");
+           return;
+         }
+        if (/\d/.test(name)) {
+            alert("Name cannot contain numbers!");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(mail)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        const mobileRegex = /^[0-9]{10}$/;
+        if (!mobileRegex.test(phone)) {
+            alert("Mobile number must be exactly 10 digits.");
+            return;
+        }
+
+        if (!address.trim()) {
+            alert("Please enter your address!");
+            return;
+        }
+
+        const pincodeRegex = /^\d{6}$/;  // 6-digit pincode
+        if (!pincodeRegex.test(pincode)) {
+            alert("Pincode must be a 6-digit number.");
+            return;
+        }
+
         const updateUser = {
             username: name,
             mail: mail,
-            phonenumber: phone,
+            phonenumber: Number(phone),
             address: address,
             pincode: pincode,
         };
