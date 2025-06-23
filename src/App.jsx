@@ -27,6 +27,7 @@ import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/CartPage'
 import Profile from './pages/Profile';
+import ChangePassword from './pages/ChangePassword';
 import UpdateProfilePage from './pages/UpdateProfile';
 import ProtectedRoute from './components/ProtectRoute';
 import { CartProvider } from './context/context';
@@ -44,6 +45,7 @@ function AppWrapper() {
        <Route path="/home" element={ <ProtectedRoute> <Home /></ProtectedRoute> } />
        <Route path="/profile" element={<ProtectedRoute>  <Profile/></ProtectedRoute> }/>
        <Route path="/update-profile" element={<ProtectedRoute>  <UpdateProfilePage/></ProtectedRoute> }/>
+       <Route path="/changepwd" element={<ProtectedRoute>  <ChangePassword/></ProtectedRoute> }/>
        {/* <Route path="/product/:id" element={<ProductDetails />} /> */}
        <Route path="/product/:id" element={<ProtectedRoute>  <ProductDetails/></ProtectedRoute> }/>
        <Route path="/cart" element={ <ProtectedRoute> <Cart /> </ProtectedRoute>} />

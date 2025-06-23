@@ -43,7 +43,7 @@ const Profile = () => {
   return (
     <div className="w-full max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-xl">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold"> Profile</h2>
+        <h2 className="text-xl font-bold text-center"> Profile</h2>
       </div>
 
       <div className="space-y-4 text-gray-800 text-sm">
@@ -68,11 +68,16 @@ const Profile = () => {
           <span>{pincode}</span>
         </div>
 
-        <div className="mt-8 text-center">
+        {/* <div className="mt-8 text-center">
             <button onClick={() => window.location.href = "/update-profile"}
-                className="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700">
-                Edit
-            </button>
+                className="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"> Edit</button>
+        </div> */}
+
+        <div className="flex justify-between mt-6">
+            <button onClick={() => window.location.href = "/update-profile"}
+                className="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"> Edit</button>
+            <button onClick={() => window.location.href = "/changepwd"}
+                className="px-4 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"> Change Password</button>
         </div>
 
       </div>
