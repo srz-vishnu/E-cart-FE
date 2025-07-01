@@ -103,7 +103,7 @@ const Products = ({ category, setCategory }) => {
 
   // Show all if category is 'all', otherwise filter
   const filteredProducts = category === 'all'
-    ? allProducts.slice(0, 8)
+    ? allProducts.slice(0, 12)
     : allProducts.filter(product => product.category === category);
 
   return (

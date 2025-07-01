@@ -65,7 +65,7 @@ const UpdateProfile = () => {
             mail: mail,
             phonenumber: Number(phone),
             address: address,
-            pincode: pincode,
+            pincode: Number(pincode),
         };
         console.log("Sending updated user details to backend:", updateUser);
 
