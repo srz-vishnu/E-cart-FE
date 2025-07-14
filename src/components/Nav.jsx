@@ -62,7 +62,8 @@ const Navbar = () => {
               <span className="text-sm font-medium -mt-[1px]">{userName}</span>
            </div>
            )} */}
-            {userName && (location.pathname !== "/profile" && location.pathname !== "/update-profile") && (
+            {/* {userName && (location.pathname !== "/profile" && location.pathname !== "/update-profile") && ( */}
+             {userName && (
               <div className="relative" ref={dropdownRef}>
                 <FaUserCircle size="1.5rem" className="text-gray-600 cursor-pointer" onClick={() => setShowDropdown(!showDropdown)} />
                 {showDropdown && (
