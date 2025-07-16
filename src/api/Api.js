@@ -18,7 +18,23 @@ const getAllBranchDetails = async() => {
     }
 }
 
+const getBrandDetailsById = async(id) => {
+    try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get(`${base_URL}/product/brand/${id}`,{
+            headers : {
+                Authorization: `Bearer ${token}` 
+            }
+        });
+        const data = response?.data?.result || [];
+        return data;
+    } catch (error) {
+        console.log(error,'get all brand details for product page');
+        
+    }
+}
+
 
 export {
-    getAllBranchDetails
+    getAllBranchDetails, getBrandDetailsById
 }
